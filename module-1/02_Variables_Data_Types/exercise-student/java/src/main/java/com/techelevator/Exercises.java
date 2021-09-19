@@ -536,6 +536,17 @@ public class Exercises {
 	    1.90 hours. How long will it take the two painters working together to paint 5 12 x 14 rooms?
 	    Hint: Calculate the hourly rate for each painter, combine them, and then divide the total walls in feet by the combined hourly rate of the painters.
 	    */
+		int roomSize = 12 * 14;
+		Double billHourlyRate =
+		Double jillHourlyRate =
+		Double totalHourlyRate = (billHourlyRate * jillHourlyRate) ;
+		System.out.println(totalHourlyRate);
+		Double lengthOfPaintSession = totalHourlyRate / 5.0;
+		System.out.println(lengthOfPaintSession);
+
+
+
+
 
 
 
