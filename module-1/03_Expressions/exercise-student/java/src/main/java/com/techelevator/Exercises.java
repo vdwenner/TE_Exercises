@@ -219,7 +219,7 @@ public class Exercises {
 	 in3050(40, 50) → true
 	 */
 	public boolean in3050(int a, int b) {
-		if 
+		if
 	}
 
 	/*
