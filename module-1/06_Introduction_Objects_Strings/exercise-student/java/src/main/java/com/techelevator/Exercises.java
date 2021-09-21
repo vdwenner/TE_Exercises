@@ -9,8 +9,8 @@ public class Exercises {
 	 helloName("X") → "Hello X!"
 	 */
 	public String helloName(String name) {
-		return null;
-	}
+
+			}
 
 	/*
 	 Given two strings, a and b, return the result of putting them together in the order abba,
@@ -56,7 +56,12 @@ public class Exercises {
 	 extraEnd("Hi") → "HiHiHi"
 	 */
 	public String extraEnd(String str) {
+
+
+
+
 		return null;
+
 	}
 
 	/*
