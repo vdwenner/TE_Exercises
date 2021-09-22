@@ -256,12 +256,13 @@ public class Exercises {
 	 hasBad("xbadxx") → true
 	 hasBad("xxbadxx") → false
 	 */
-	//public boolean hasBad(String str) {
-	//	if (str.contains("bad")) {
-	//		return true;
-	//	}
-	//	return false;
-	//}
+	public boolean hasBad(String str) {
+		int indexB = str.indexOf("bad");
+		if (indexB == 0 || indexB == 1) {
+			return true;
+		}
+		return false;
+	}
 
 	/*
 	 Given a string and a non-negative int n, return a larger string that is n copies of the original string.
@@ -270,18 +271,10 @@ public class Exercises {
 	 stringTimes("Hi", 1) → "Hi"
 	 */
 	public String stringTimes(String str, int n) {
-		if (n == 1) {
-			String strFinder = str.replace(str.substring(0,str.length()),str.substring(0,str.length()));
-			return strFinder;
-	} else if (n == 2) {
-			String strFinder = str.replace(str.substring(0,str.length()), (str.substring(0,str.length())
-			+str.substring(0,str.length())));
-			return strFinder;
-		} else if (n == 3) {
-			String strFinder = str.replace(str.substring(0,str.length()), (str.substring(0,str.length())
-			+str.substring(0,str.length())+str.substring(0,str.length())));
-			return strFinder;
-		}
+		if (n >= 0) {
+			return str.repeat(n);
+		} else return "";
+	}
 
 	/*
 	 Given a string and a non-negative int n, we'll say that the front of the string is the first 3 chars, or
