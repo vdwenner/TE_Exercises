@@ -18,6 +18,7 @@ public class Exercises {
 		}
 		return false;
 	}
+
 	/*
 	 2. We have two monkeys, a and b, and the parameters aSmile and bSmile indicate if each is smiling.
 	 We are in trouble if they are both smiling or if neither of them is smiling. Return true if we
@@ -34,7 +35,6 @@ public class Exercises {
 		}
 		return false;
 	}
-
 
 
 	/*
@@ -64,7 +64,7 @@ public class Exercises {
 	 */
 	public int diff21(int n) {
 		int difference = n - 21;
-		int absoluteDifference = (difference < 0)?difference * -1: difference;
+		int absoluteDifference = (difference < 0) ? difference * -1 : difference;
 		if (n > 21) {
 			int doubleAbsoluteDifference = absoluteDifference * 2;
 			return doubleAbsoluteDifference;
@@ -202,7 +202,7 @@ public class Exercises {
 	 intMax(3, 2, 1) → 3
 	 */
 	public int intMax(int a, int b, int c) {
-		if (a >=b && a >= c) {
+		if (a >= b && a >= c) {
 			return a;
 		} else if (b >= a && b >= c) {
 			return b;
@@ -219,7 +219,13 @@ public class Exercises {
 	 in3050(40, 50) → true
 	 */
 	public boolean in3050(int a, int b) {
-		if
+		if ((a >= 30 && a <= 40) && (b >= 30 && b <= 40)) {
+			return true;
+		} else if ((a >= 40 && a <= 50) && (b >= 40 && b <= 50)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/*
@@ -230,9 +236,22 @@ public class Exercises {
 	 max1020(11, 9) → 11
 	 */
 	public int max1020(int a, int b) {
-
+		if (a > b) {
+			if (a <= 20 && a >= 10) {
+				return a;
+			}
+		}
+		if (b > a) {
+			if (b <= 20 && b >= 10) {
+				return b;
+			}
+		}
 		return 0;
 	}
+
+
+
+
 
 	/*
 	 16. When squirrels get together for a party, they like to have cigars. A squirrel party is successful
@@ -244,7 +263,20 @@ public class Exercises {
 	 cigarParty(70, true) → true
 	 */
 	public boolean cigarParty(int cigars, boolean isWeekend) {
-		return false;
+		if (!isWeekend){
+			if (cigars > 39 && cigars < 61) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			if (cigars >= 40){
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 	}
 
 	/*
@@ -259,7 +291,12 @@ public class Exercises {
 	 dateFashion(5, 5) → 1
 	 */
 	public int dateFashion(int you, int date) {
-		return 0;
+		if (you >= 8 || date >= 8){
+			return (you <= 2 || date <= 2) ? 0 : 2;
+		}
+		return 1;
+
+
 	}
 
 	/*
@@ -271,6 +308,7 @@ public class Exercises {
 	 squirrelPlay(95, true) → true
 	 */
 	public boolean squirrelPlay(int temp, boolean isSummer) {
+
 		return false;
 	}
 
@@ -295,6 +333,10 @@ public class Exercises {
      yourCakeAndEatItToo(11.00, false) → "special"
      */
     public String yourCakeAndEatItToo(double mealAmount, boolean isBirthday) {
+    	if (isBirthday) {
+    		int mealAmount += 5;
+
+		}
         return "";
     }
 
