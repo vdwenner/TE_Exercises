@@ -334,8 +334,22 @@ public class Exercises {
      */
     public String yourCakeAndEatItToo(double mealAmount, boolean isBirthday) {
     	if (isBirthday) {
-    		int mealAmount += 5;
-
+    		mealAmount += 5.00;
+ 			if (mealAmount <= 10.00){
+ 				return "standard";
+			} else if (mealAmount <= 15.00){
+ 				return "special";
+			} else if (mealAmount > 15.00){
+ 				return "ginormous";
+			}
+		} else {
+			if (mealAmount <= 10.00){
+				return "standard";
+			} else if (mealAmount <= 15.00){
+				return "special";
+			} else if (mealAmount > 15.00){
+				return "ginormous";
+			}
 		}
         return "";
     }
