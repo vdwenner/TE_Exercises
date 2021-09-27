@@ -82,7 +82,20 @@ public class Exercises {
 	 *
 	 */
 	public double isItOnSale(String itemNumber) {
-		return -1.0;
+		Map<String, Double> discounts = new HashMap<>();
+		discounts.put("KITCHEN4001", 0.20);
+		discounts.put("GARAGE1070", 0.15);
+		discounts.put("LIVINGROOM", 0.10);
+		discounts.put("KITCHEN6073", 0.40);
+		discounts.put("BEDROOM3434", 0.60);
+		discounts.put("BATH0073", 0.15);
+
+		if (discounts.containsKey(itemNumber.toUpperCase())){
+			//System.out.print(("test.\n"));
+			return discounts.get(itemNumber);
+		} else {
+			return 0.00;
+		}
 	}
 
 	/*
@@ -96,7 +109,14 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-		return null;
+		if (peterPaul.containsKey("Peter") || peterPaul.containsKey("Paul")){
+			if (peterPaul.get("Peter") > 0){
+				int transfer = peterPaul.get("Peter") / 2;
+				transfer += peterPaul.get("Paul");
+				peterPaul.put("Paul", transfer);
+				return peterPaul;
+			}
+		return peterPaul;
 	}
 
 	/*
