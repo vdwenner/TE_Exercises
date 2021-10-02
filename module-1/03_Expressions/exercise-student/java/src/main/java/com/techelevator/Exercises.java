@@ -646,23 +646,23 @@ public class Exercises {
 	 */
 	public int luckySum(int a, int b, int c) {
 		if (a == 13) {
-			if (b == 13 || c == 13) {
+			if (b == 13) {
 				return 0;
 			}
 			return c;
-		}
-		if (b == 13) {
+		} else if (b == 13) {
 			if (a == 13) {
 				return 0;
 			}
 			return a;
 		}
-		if (c == 13) {
-			if (a == 13) {
-				return 0;
-			}
-			return a + b;
+		if (b == 13){
+			return a;
 		}
-		return "none";
+		if (a == 13){
+			return 0;
+		}
+		return a + b;
 	}
 }
+

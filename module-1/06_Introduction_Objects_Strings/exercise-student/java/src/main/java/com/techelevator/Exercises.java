@@ -46,9 +46,10 @@ public class Exercises {
 	 makeOutWord("[[]]", "word") → "[[word]]"
 	 */
 	public String makeOutWord(String out, String word) {
-		String outSub1 = out.substring(0,1);
-		String outSub2 = out.substring(2,3);
-		return outSub1 + word + outSub2;
+		Integer halfOut = out.length() / 2;
+		String firstHalf = out.substring(0, halfOut);
+		String secondHalf = out.substring(halfOut);
+		return firstHalf + word + secondHalf;
 	}
 
 	/*
@@ -176,10 +177,12 @@ public class Exercises {
 	 withoutEnd2("ab") → ""
 	 */
 	public String withoutEnd2(String str) {
-		if (str.length() >= 3) {
-			return str.substring(1,str.length()-1);
+		if (str.length() <= 2){
+			return "";
+		} else{
+			int strLength = str.length()-1;
+			return str.substring(1, strLength);
 		}
-		return " ";
 	}
 
 	/*
@@ -229,10 +232,9 @@ public class Exercises {
 		if (index < 0 ^ index >= str.length() - 1) {
 			return str.substring(0, 2);
 		} else if (index < str.length()) {
-			String twoCharGivenIndex = str.substring(index, index + 2);
-			return twoCharGivenIndex;
+			return str.substring(index, index + 2);
 		}
-		return"";
+		return "";
 	}
 
 
@@ -243,9 +245,9 @@ public class Exercises {
 	 middleThree("and") → "and"
 	 middleThree("solving") → "lvi"
 	 */
-//	public String middleThree(String str) {
-	//	String startingPoint = str.length()/2;
-	//	return;
+	public String middleThree(String str) {
+		String findMiddle = str.substring(str.length() / 2 - 1, str.length() / 2 + 2);
+		return findMiddle;
 	}
 
 	/*
@@ -257,7 +259,8 @@ public class Exercises {
 	 hasBad("xxbadxx") → false
 	 */
 	public boolean hasBad(String str) {
-		int indexB = str.indexOf("bad");
+		int indexB;
+		indexB = str.indexOf("bad");
 		if (indexB == 0 || indexB == 1) {
 			return true;
 		}
@@ -284,8 +287,18 @@ public class Exercises {
 	 frontTimes("Abc", 3) → "AbcAbcAbc"
 	 */
 	public String frontTimes(String str, int n) {
-		return null;
-	}
+			String result = "";
+			if (str.length() <= 3) {
+				for (int i = 0; i < n; i++) {
+					result += str;
+				}
+			} else {
+				for (int i = 0; i < n; i++) {
+					result += str.substring(0, 3);
+				}
+			}
+			return result;
+		}
 
 	/*
 	 Count the number of "xx" in the given string. We'll say that overlapping is allowed, so "xxx" contains 2 "xx".
@@ -294,16 +307,27 @@ public class Exercises {
 	 countXX("xxxx") →
 	 */
 	public int countXX(String str) {
-		return 0;
+		int count = 0;
+		for (int i = 0;i < str.length()-1;i++){
+			if (str.substring(i, i+2).equals("xx")) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/*
 	 Given a string, return true if the first instance of "x" in the string is immediately followed by another "x".
+
 	 doubleX("axxbb") → true
 	 doubleX("axaxax") → false
 	 doubleX("xxxxx") → true
 	 */
 	public boolean doubleX(String str) {
+		int indexOfX = str.indexOf('x');
+		if (indexOfX < str.length() - 1) {
+			return str.charAt(indexOfX + 1) == 'x';
+		}
 		return false;
 	}
 
@@ -314,7 +338,13 @@ public class Exercises {
 	 stringBits("Heeololeo") → "Hello"
 	 */
 	public String stringBits(String str) {
-		return null;
+		String newStr = "";
+		for (int i = 0; i < str.length(); i++){
+			if (i % 2 == 0) {
+				newStr += str.charAt(i);
+			}
+		}
+		return newStr;
 	}
 
 	/*
@@ -324,7 +354,12 @@ public class Exercises {
 	 stringSplosion("ab") → "aab"
 	 */
 	public String stringSplosion(String str) {
-		return null;
+		String result = "";
+		for (int i = 0; i <= str.length(); i++) {
+			result += str.substring(0, i);
+		}
+
+		return result;
 	}
 
 	/*
@@ -335,7 +370,13 @@ public class Exercises {
 	 last2("axxxaaxx") → 2
 	 */
 	public int last2(String str) {
-		return 0;
+		int count = 0;
+		for (int i = 0; i < str.length() - 2; i++) {
+			if (str.substring(i, i + 2).equals(str.substring(str.length() - 2))) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/*
@@ -346,7 +387,18 @@ public class Exercises {
 	 stringX("xabxxxcdx") → "xabcdx"
 	 */
 	public String stringX(String str) {
-		return null;
+		String result = "";
+		if (str.length() <= 2){
+			return str;
+		}
+		result += str.charAt(0);
+		for (int i = 1; i < str.length() - 1; i++) {
+			if (str.charAt(i) != 'x') {
+				result += str.charAt(i);
+			}
+		}
+		result += str.charAt(str.length() - 1);
+		return result;
 	}
 
 	/*
@@ -356,7 +408,14 @@ public class Exercises {
 	 altPairs("CodingHorror") → "Congrr"
 	 */
 	public String altPairs(String str) {
-		return null;
+		String result = "";
+		for (int i = 0; i < str.length(); i += 4) {
+			result += str.charAt(i);
+			if (i + 1 < str.length()) {
+				result += str.charAt(i + 1);
+			}
+		}
+		return result;
 	}
 
 	/*
@@ -367,8 +426,12 @@ public class Exercises {
 	 stringYak("yak123ya") → "123ya"
 	 */
 	public String stringYak(String str) {
-		return null;
+		int posYak = str.indexOf("yak");
+		while (posYak != -1) {
+			str = str.substring(0, posYak) + str.substring(posYak + 3);
+			posYak = str.indexOf("yak");
+		}
+		return str;
 	}
 
-}
 }
