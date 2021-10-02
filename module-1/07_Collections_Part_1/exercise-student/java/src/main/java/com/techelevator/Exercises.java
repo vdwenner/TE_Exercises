@@ -135,21 +135,23 @@ public class Exercises {
 	HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		String fizz = "Fizz";
-		String buzz = "Buzz";
-		List<String> integerToString = new ArrayList<>();
-		for (Integer placeHolder : integerArray){
-			if (placeHolder % 5 == 0 && placeHolder % 3 == 0){
-				integerToString.add(fizz + buzz);
-			} else if (placeHolder % 3 == 0){
-				integerToString.add(fizz);
-			} else if (placeHolder % 5 == 0){
-				integerToString.add(buzz);
+		List<String> stringList = new ArrayList<>();
+		boolean multipleOfThree;
+		boolean multipleOfFive;
+		for (Integer currentInteger : integerArray) {
+			multipleOfThree = currentInteger % 3 == 0;
+			multipleOfFive = currentInteger % 5 == 0;
+			if (multipleOfThree && multipleOfFive) {
+				stringList.add(new String("FizzBuzz"));
+			} else if (multipleOfThree) {
+				stringList.add(new String("Fizz"));
+			} else if (multipleOfFive) {
+				stringList.add(new String("Buzz"));
 			} else {
-				integerToString.add(placeHolder.toString());
+				stringList.add(currentInteger.toString());
 			}
 		}
-		return null;
+		return stringList;
 	}
 
 	/*
@@ -160,11 +162,17 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		Integer maxLen = (listOne.size() >= listTwo.size()) ? listOne.size() : listTwo.size();
-		for (int i = 0; i < maxLen; i++){
-			
+		int minListLength = Math.min(listOne.size(), listTwo.size());
+		List<Integer> output = new ArrayList<>();
+		for (int i = 0; i < minListLength; i++) {
+			output.add(listOne.get(i));
+			output.add(listTwo.get(i));
 		}
-		return null;
+		List<Integer> longerList = (listOne.size() > listTwo.size()) ? listOne : listTwo;
+		for (int i = minListLength; i < longerList.size(); i++) {
+			output.add(longerList.get(i));
+		}
+		return output;
 	}
 
 }
