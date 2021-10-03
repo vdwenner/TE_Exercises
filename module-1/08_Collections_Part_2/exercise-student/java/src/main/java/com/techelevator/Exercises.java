@@ -82,6 +82,7 @@ public class Exercises {
 	 *
 	 */
 	public double isItOnSale(String itemNumber) {
+
 		Map<String, Double> discounts = new HashMap<>();
 		discounts.put("KITCHEN4001", 0.20);
 		discounts.put("GARAGE1070", 0.15);
@@ -90,13 +91,16 @@ public class Exercises {
 		discounts.put("BEDROOM3434", 0.60);
 		discounts.put("BATH0073", 0.15);
 
-		if (discounts.containsKey(itemNumber.toUpperCase())){
-			//System.out.print(("test.\n"));
-			return discounts.get(itemNumber);
-		} else {
-			return 0.00;
+		if ((itemNumber == null) || (itemNumber.isEmpty()) || !discounts.containsKey(itemNumber.toUpperCase())) {
+			return 0.0;
 		}
+		return discounts.get(itemNumber.toUpperCase());
 	}
+
+
+
+
+
 
 	/*
 	 * Modify and return the given Map as follows: if "Peter" has more than 0 money, transfer half of it to "Paul",
@@ -109,13 +113,19 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-		if (peterPaul.containsKey("Peter") || peterPaul.containsKey("Paul")){
-			if (peterPaul.get("Peter") > 0){
-				int transfer = peterPaul.get("Peter") / 2;
-				transfer += peterPaul.get("Paul");
-				peterPaul.put("Paul", transfer);
-				return peterPaul;
-			}
+		Integer peterMoney = peterPaul.get("Peter");
+		Integer paulMoney = peterPaul.get("Paul");
+		if (peterMoney > 0 && paulMoney < 1000){
+			peterPaul.remove("Peter");
+			peterPaul.remove("Paul");
+			Integer newPeterMoney = peterMoney / 2;
+			newPeterMoney += peterMoney % 2;
+			Integer newPaulMoney = paulMoney + newPeterMoney;
+			newPaulMoney -= peterMoney % 2;
+			peterPaul.put("Peter", newPeterMoney);
+			peterPaul.put("Paul", newPaulMoney);
+			return peterPaul;
+		}
 		return peterPaul;
 	}
 
@@ -129,7 +139,24 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-		return null;
+		Integer peterMoney = peterPaul.get("Peter");
+		Integer newPeterMoney = peterMoney / 4;
+		newPeterMoney += peterMoney % 4;
+		Integer paulMoney = peterPaul.get("Paul");
+		Integer newPaulMoney = paulMoney / 4;
+		newPaulMoney += paulMoney % 4;
+		Integer newPaulBalance = paulMoney - newPaulMoney;
+		Integer newPeterBalance = peterMoney - newPeterMoney;
+		Integer newMoney = newPaulMoney + newPeterMoney;
+		if ((peterPaul.get("Peter") >= 5000) && (peterPaul.get("Paul") >= 10000)){
+			peterPaul.remove("Peter");
+			peterPaul.remove("Paul");
+			peterPaul.put("Peter", newPeterBalance);
+			peterPaul.put("Paul", newPaulBalance);
+			peterPaul.put("PeterPaulPartnership", newMoney);
+			return peterPaul;
+		}
+		return peterPaul;
 	}
 
 	/*
@@ -141,6 +168,10 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
+		for (int i = 0; i < words.length-1;i++){
+			String value = words[i];
+
+		}
 		return null;
 	}
 
