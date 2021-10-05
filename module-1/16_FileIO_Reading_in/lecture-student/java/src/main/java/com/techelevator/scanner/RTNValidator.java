@@ -13,7 +13,11 @@ public class RTNValidator {
 		printApplicationBanner();
 		
 		File inputFile = getInputFileFromUser();
+
+
+
 		try(Scanner fileScanner = new Scanner(inputFile)) {
+			fileScanner.wait(500000);
 			while(fileScanner.hasNextLine()) {
 				String line = fileScanner.nextLine();
 				String rtn = line.substring(0, 9);
@@ -22,6 +26,13 @@ public class RTNValidator {
 					System.out.println(line);
 				}
 			}
+		}
+		catch (FileNotFoundException fnfEx){
+			System.out.println(fnfEx.toString() + "File cannot be found");
+		}
+		catch (Exception ex) {
+			System.out.println(ex.toString() + " was caught as a general exception");
+			System.exit(3);
 		}
 	}
 
@@ -39,13 +50,13 @@ public class RTNValidator {
 		String path = userInput.nextLine();
 		
 		File inputFile = new File(path);
-		if(inputFile.exists() == false) { // checks for the existence of a file
-			System.out.println(path+" does not exist");
-			System.exit(1); // Ends the program
-		} else if(inputFile.isFile() == false) {
-			System.out.println(path+" is not a file");
-			System.exit(1); // Ends the program
-		}
+//		if(inputFile.exists() == false) { // checks for the existence of a file
+//			System.out.println(path+" does not exist");
+//			System.exit(1); // Ends the program
+//		} else if(inputFile.isFile() == false) {
+//			System.out.println(path+" is not a file");
+//			System.exit(1); // Ends the program
+//		}
 		return inputFile;
 	}
 

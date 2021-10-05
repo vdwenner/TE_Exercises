@@ -304,14 +304,16 @@ public class Exercises {
 	 */
 	public Map<String, Integer> last2Revisited(String[] words) {
 		Map<String, Integer> subStringChecker = new HashMap<>();
-		Integer counter = 0;
-		for (int i = 0; i < words.length;++i){
-			if (words[i].substring(0,words[i].length()-2).contains(words[i].substring(words[i].length()-1))){
-				counter++;
-				subStringChecker.put(words[i], counter);
+		for (String currentWord : words) {
+			int counter = 0;
+			for (int i = 0; i < currentWord.length(); ++i) {
+				if (currentWord.endsWith(currentWord.substring(i-2, i-1))) {
+					counter++;
+				} else {
+					subStringChecker.put(currentWord, counter);
+				}
 			}
 		}
 		return subStringChecker;
 	}
-
 }
