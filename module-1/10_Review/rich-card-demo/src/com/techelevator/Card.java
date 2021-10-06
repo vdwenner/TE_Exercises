@@ -15,7 +15,6 @@ public class Card {
 
     //Getter and Setters
 
-
     public int getSuit() {
         return this.suit;
     }
