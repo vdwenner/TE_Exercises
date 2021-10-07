@@ -1,1 +1,0 @@
-This is a two-day capstone. All of the details are included in the Day 19 folder.
