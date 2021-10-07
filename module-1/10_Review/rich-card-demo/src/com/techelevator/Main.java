@@ -42,10 +42,17 @@ public class Main {
             dealtHand[i] = pokerGame.dealCard();
         }
 
+        System.out.println("**** YOUR HAND ****");
         for (int i = 0; i < dealtHand.length; i++) {
             System.out.println(reportCard(dealtHand[i]));
-            dealtHand[i].flip();
         }
+        System.out.println();
+
+        int randomCardInHand = (int)(Math.floor(Math.random() * 5.2));
+
+        dealtHand[randomCardInHand].flip();
+
+        System.out.println( "**** RANDOM CARD FLIP ****");
 
         for (int i = 0; i < dealtHand.length; i++) {
             System.out.println(reportCard(dealtHand[i]));

@@ -2,6 +2,7 @@ package com.techelevator.scanner;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class RTNValidator {
@@ -9,6 +10,27 @@ public class RTNValidator {
 	private static final int[] CHECKSUM_WEIGHTS = new int[] { 3, 7, 1, 3, 7, 1, 3, 7, 1 };
 
 	public static void main(String[] args) throws FileNotFoundException {
+
+		/// Normally this would be a new fileScanner.nextLine();
+		String punctuatedText = "conversation. \"Are you--are you fond--of--of dogs?\" The Mouse did not";
+
+		String rawText = punctuatedText.replace(".","").replace("?","").replace("\"","");
+
+		String[] wordsInRaw = rawText.split(" ");
+
+		System.out.println(punctuatedText);
+		System.out.println(rawText);
+		System.out.println(rawText.toLowerCase().equals("dog"));
+
+		for(String word: wordsInRaw){
+			if(word.toLowerCase().equals("dog")){
+				System.out.println(punctuatedText);
+			}
+		}
+
+
+		System.exit(99);
+
 
 		printApplicationBanner();
 		

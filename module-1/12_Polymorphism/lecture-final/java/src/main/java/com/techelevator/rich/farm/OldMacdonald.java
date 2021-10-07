@@ -26,13 +26,12 @@ public class OldMacdonald {
             System.out.println("Here a " + sound + " there a " + sound + " everywhere a " + sound + " " + sound);
 
             if(thing instanceof Rideable){
-                System.out.println("Go for a ride on " + thing.getName() + " and experience the " + thing.getSound() + "!");
+                System.out.println(Rideable.FEE_TO_RIDE + " TE Bucks! Ride " + thing.getName() + " and experience the " + thing.getSound() + "!");
                 ((Rideable)thing).Ride() ;
             }
 
             System.out.println();
         }
-
 //		List<Rideable> rideableThings = new ArrayList<>();
 //		rideableThings.add(daisy);
 //		rideableThings.add(bigGreen);
@@ -46,7 +45,5 @@ public class OldMacdonald {
 //
 //			}
 //		}
-
-
     }
 }
