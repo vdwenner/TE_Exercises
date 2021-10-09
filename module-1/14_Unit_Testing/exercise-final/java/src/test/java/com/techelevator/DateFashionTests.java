@@ -52,5 +52,4 @@ public class DateFashionTests {
 		assertEquals(2, exercises.getATable(8, 3));
 		assertEquals(2, exercises.getATable(3, 8));
 	}
-
 }
