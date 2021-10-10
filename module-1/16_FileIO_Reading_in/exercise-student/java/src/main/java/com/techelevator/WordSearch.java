@@ -1,51 +1,77 @@
 package com.techelevator;
-import java.util.Scanner;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Scanner;
 
+/*
+ * WordSearch
+ *
+ * Part 1
+ *
+ * Write a program that, given a search string and a path for a text file, searches the file for occurrences of
+ * the search string and each time it finds the search string, displays the line number and contents of the line it was found
+ * in on the console.
+ *
+ * The output would start with:
+ * 1) Project Gutenberg's Alice's Adventures in Wonderland, by Lewis Carroll
+ * 9) Title: Alice's Adventures in Wonderland
+ * 43) [Illustration: "Alice"]
+ *
+ * Part 2
+ *
+ * Modify the program to ask the user if the search should be case sensitive..
+ *
+ * The output should change to:
+ * 1) Project Gutenberg's Alice's Adventures in Wonderland, by Lewis Carroll
+ * 9) Title: Alice's Adventures in Wonderland
+ * 41) ALICE'S ADVENTURES IN WONDERLAND
+ * 43) [Illustration: "Alice"]
+ */
 public class WordSearch {
-	static Scanner input = new Scanner(System.in);
+
 	public static void main(String[] args) {
-		File inputFile = new File("alices_adventures_in_wonderland.txt");
 
-		if (inputFile.exists()) {
-			System.out.println("found the file");
-		}
-
-		System.out.println("Please enter the word you would like to search for: ");
-		String userInput = input.nextLine();
-		Boolean isCaseSensitive = false;
-		System.out.println("Would you like to search for words by a specific casing?");
-		String searchSensitivity = input.nextLine();
-		if (searchSensitivity.equalsIgnoreCase("Yes") || searchSensitivity.equalsIgnoreCase("Y") || searchSensitivity.equalsIgnoreCase("True")){
-			isCaseSensitive = true;
-
-		} else {
-				isCaseSensitive = false;
+		try (Scanner userInput = new Scanner(System.in)) {
+			System.out.println("What is the file that should be searched?");
+			String path = userInput.nextLine();
+			File inputFile = inputFile = new File(path);
+			if( !inputFile.exists() ) {
+				System.out.println(path+" does not exist");
+				System.exit(1); // Ends the program
 			}
-
-
-		try (Scanner inputScanner = new Scanner(inputFile.getAbsoluteFile())) {
-			int numOfLines = 0;
-			Map<Integer, String> linesAndValues = new HashMap<>();
-			while (inputScanner.hasNextLine()){
-				String lineInput = inputScanner.nextLine();
-				numOfLines++;
-				String [] wordsOnLine = lineInput.split(" ");
-				for (String word : wordsOnLine){
-					if (word.equalsIgnoreCase(userInput)){
-						linesAndValues.put(numOfLines, lineInput);
+			if( !inputFile.isFile() ) {
+				System.out.println(path+" is not a file");
+				System.exit(1); // Ends the program
+			}
+			System.out.println("What is the search word you are looking for?");
+			String searchWord = userInput.nextLine();
+			if ((searchWord == null) || (searchWord.isEmpty())) {
+				System.out.println("The search word is empty");
+				System.exit(1);
+			}
+			System.out.println("Should the search be case sensitive? (Y\\N)");
+			boolean caseSensitive = userInput.nextLine().toLowerCase().equals("y");
+			int lineNumber = 1;
+			try (Scanner inputScanner = new Scanner(inputFile.getAbsoluteFile())){
+				while (inputScanner.hasNextLine()) {
+					String line = inputScanner.nextLine();
+					if (caseSensitive == false) { //Yes, I know '!' negates, but '== false' is more readable
+						if (line.toLowerCase().contains(searchWord.toLowerCase())) { // lower-case strings to make case-insensitive
+							System.out.println(lineNumber + ") " + line);
+						}
 					}
-
+					else {
+						if (line.contains(searchWord)) {
+							System.out.println(lineNumber + ") " + line);
+						}
+					}
+					lineNumber += 1;
 				}
+			} catch (FileNotFoundException e) {
+				System.out.println(e.getMessage());
 			}
 		}
-		catch (FileNotFoundException fnfEx){
-			System.out.println("File cannot be found.");
-		}
-
 
 	}
 
