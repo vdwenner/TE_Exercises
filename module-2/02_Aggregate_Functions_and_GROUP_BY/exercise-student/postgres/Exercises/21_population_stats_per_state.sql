@@ -2,4 +2,4 @@
 -- Name the population columns 'average_population, 'min_population', and 'max_population'.
 -- Order the results from lowest to highest average population.
 -- (4 rows)
-
+SELECT DISTINCT AVG(population) AS average_population, MAX(population) AS max_population, MIN(population) AS min_population, census_region FROM state WHERE census_region IS NOT NULL GROUP BY census_region ORDER BY average_population ASC;
