@@ -33,11 +33,18 @@
 -- LEFT JOIN
 
 -- Write a query to retrieve the state name and the earliest date a park was established in that state (or territory) for every record in the state table that has park records associated with it.
-
+SELECT st.state_name, MIN(pk.date_established) AS First_Park FROM state st INNER JOIN park_state pkst
+                                ON st.state_abbreviation = pkst.state_abbreviation
+                                        INNER JOIN park pk
+                                                ON pk.park_id = pkst.park_id
+GROUP BY state_name;
 
 -- Modify the previous query so the results include entries for all the records in the state table, even if they have no park records associated with them.
-
-
+SELECT city_name AS Placeholder, 'City' AS source FROM city
+UNION
+SELECT state_name AS Placename, 'State' AS source FROM state
+ORDER BY Placename
+;
 
 -- UNION
 
