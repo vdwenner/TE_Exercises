@@ -24,13 +24,19 @@ public class JdbcProjectDao implements ProjectDao {
 
 	@Override
 	public Project getProject(Long projectId) {
-		return new Project(0L, "Not Implemented Yet", null, null);
+		Project project = new Project();
+		String sql = "SELECT project_id, name, from_date, to_date FROM project WHERE project_id = ?;";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
+		if (results.next()) {
+			return MapProjectsToRow(results);
+		}
+		return null;
 	}
 
 	@Override
 	public List<Project> getAllProjects() {
 		List<Project> projects = new ArrayList<>();
-		String sql = "SELECT DISTINCT pe.project_id, name, from_date, to_date, employee_id FROM project p INNER JOIN project_employee pe ON pe.project_id = p.project_id ;\n";
+		String sql = "SELECT pe.project_id, name, from_date, to_date, employee_id FROM project p INNER JOIN project_employee pe ON pe.project_id = p.project_id ;\n";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 		while (results.next()) {
 			projects.add(MapProjectsToRow(results));
@@ -41,24 +47,38 @@ public class JdbcProjectDao implements ProjectDao {
 	@Override
 	public Project createProject(Project newProject) {
 		Project project = new Project();
-
-		String sql = "UPDATE project SET name = ?, from_date = ?, to_date = ?";
-		jdbcTemplate.update(sql, newProject.getName(), newProject.getFromDate(), newProject.getToDate());
-		return project;
+		String insert = "INSERT INTO project (name, from_date, to_date) VALUES (?, ?, ?) RETURNING project_id";
+		Long newId = jdbcTemplate.queryForObject(insert, Long.class, newProject.getName(), newProject.getFromDate(), newProject.getToDate());
+		String sql = "SELECT project_id, name, from_date, to_date FROM project WHERE project_id = ?;";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, newId);
+		if (results.next()) {
+			project.setName(results.getString("name"));
+			project.setToDate(Objects.requireNonNull(results.getDate("to_date")).toLocalDate());
+			project.setFromDate(Objects.requireNonNull(results.getDate("from_date")).toLocalDate());
+			project.setId(results.getLong("project_id"));
+			return project;
+		}
+		return null;
 	}
 
 	@Override
 	public void deleteProject(Long projectId) {
-
+		String delete = "DELETE FROM project_employee WHERE project_id = ?;";
+		jdbcTemplate.update(delete, projectId);
+		String sql = "DELETE FROM project WHERE project_id = ?;";
+		jdbcTemplate.update(sql, projectId);
 	}
 
 	private Project MapProjectsToRow(SqlRowSet input) {
 		Project project = new Project();
-		project.setFromDate((input.getDate("from_date")).toLocalDate());
+		if (input.getDate("from_date") != null) {
+			project.setFromDate((input.getDate("from_date")).toLocalDate());
+		}
 		project.setId(input.getLong("project_id"));
 		project.setName(input.getString("name"));
-		project.setToDate((input.getDate("to_date")).toLocalDate());
-		project.setId(input.getLong("employee_id"));
+		if (input.getDate("to_date") != null) {
+			project.setToDate((input.getDate("to_date")).toLocalDate());
+		}
 		return project;
 	}
 	
