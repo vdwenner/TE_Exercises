@@ -14,7 +14,6 @@ public interface DepartmentDao {
 	 * @return a filled out department object
 	 */
 	public Department getDepartment(Long departmentId);
-
 	/**
 	 * Get all departments from the datastore.
 	 *
