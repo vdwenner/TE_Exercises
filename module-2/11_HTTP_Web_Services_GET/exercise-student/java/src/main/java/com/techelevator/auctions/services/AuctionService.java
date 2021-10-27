@@ -1,6 +1,7 @@
 package com.techelevator.auctions.services;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import com.techelevator.auctions.model.Auction;
@@ -38,18 +39,18 @@ public class AuctionService {
 
     public Auction[] getAuctionsMatchingTitle(String title) {
         // call api here
-        List<Auction[]> auction = new ArrayList<>();
-        Auction[] response = restTemplate.getForObject("https://localhost:3000/auctions?title_like=" + title,
-                Auction[].class, auction);
-        return response;
+
+        Auction[] newAuction = restTemplate.getForObject("https://localhost:3000/auctions?title_like=" + title,
+                Auction[].class);
+        return newAuction;
     }
 
     public Auction[] getAuctionsAtOrBelowPrice(double price) {
         // call api here
-        Auction[] response = restTemplate.getForObject(
-                 "http://localhost:3000/auctions?currentBid_lte<=" + price,
+        Auction[] currentBid = restTemplate.getForObject(
+                "http://localhost:3000/auctions?currentBid_lte=" + price,
                 Auction[].class);
-        return response;
-    }
+        return currentBid;
+        }
 
 }
