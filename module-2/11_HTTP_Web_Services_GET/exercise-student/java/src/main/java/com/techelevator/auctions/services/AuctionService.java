@@ -47,7 +47,7 @@ public class AuctionService {
     public Auction[] getAuctionsAtOrBelowPrice(double price) {
         // call api here
         Auction[] response = restTemplate.getForObject(
-                 "http://localhost:3000/auctions?currentBid_lte=" + price,
+                 "http://localhost:3000/auctions?currentBid_lte<=" + price,
                 Auction[].class);
         return response;
     }

@@ -18,17 +18,52 @@ public class AuctionService {
 
     public Auction add(Auction newAuction) {
         // place code here
-        return null;
+        try {
+            Auction Auction = new Auction();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpEntity<Auction> entity = new HttpEntity<>(newAuction, headers);
+            Auction = restTemplate.postForObject(API_BASE_URL, entity, Auction.class);
+            return Auction;
+        } catch (ResourceAccessException rae) {
+            System.out.println("There has been a connection error to the API.");
+            return null;
+        } catch (RestClientResponseException re) {
+            System.out.println("There was no response from the server API.");
+            return null;
+        }
     }
 
     public boolean update(Auction updatedAuction) {
         // place code here
-        return false;
+        boolean update = false;
+        try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            HttpEntity<Auction> entity = new HttpEntity<>(updatedAuction, headers);
+            restTemplate.put(API_BASE_URL + updatedAuction.getId(), entity);
+            update = true;
+            return update;
+        }catch (RestClientResponseException e) {
+            return false;
+        } catch (ResourceAccessException rae) {
+            return false;
+        }
     }
 
     public boolean delete(int auctionId) {
         // place code here
-        return false;
+        boolean success = false;
+        try {
+            restTemplate.delete(API_BASE_URL + auctionId);
+            success = true;
+            return success;
+        } catch (RestClientResponseException e) {
+            return success;
+        } catch (ResourceAccessException rae) {
+            return success;
+        }
+
     }
 
     public Auction[] getAllAuctions() {
