@@ -1,11 +1,13 @@
 package com.techelevator.auctions.dao;
 
 import com.techelevator.auctions.model.Auction;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class MemoryAuctionDao implements AuctionDao {
 
     public static List<Auction> auctions = new ArrayList<>();
