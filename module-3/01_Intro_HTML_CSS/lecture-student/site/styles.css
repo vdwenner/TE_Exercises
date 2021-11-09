@@ -1,0 +1,14 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: crimson;
+    font-weight: bold;
+}
+
+img {
+    height: 200px;
+}
+
+h1 {
+    font-size: 32px;
+    color: darkmagenta;
+}

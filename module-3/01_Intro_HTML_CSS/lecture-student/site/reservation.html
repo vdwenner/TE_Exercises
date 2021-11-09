@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bits & Bytes</h1>
+        <p>Welcome to the Interweb's best restaurant</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Return to Bits & Bytes menu</a>
+    </nav>
+
+    <main>
+        <form method="GET" action="https://example.com/api/reservation">
+            <div>
+                <label for="txtReservationName">Name for Reservation</label>
+                <input id="txtReservationName" type="text" name="reservationName">
+            </div>
+
+            <div>
+                <label for="intNumberOfGuests">How many (1-6): </label>
+                <input id="intNumberOfGuests" type="number" min="1" max="6">
+            </div>
+            <div>
+                <label for="dtpReservationDate">Pick a day:</label>
+                <input id="dtpReservationDate" name="reservationDate" type="date">
+            </div>
+            <div>
+                <label for="tpReservationTime">Pick a time (10:00-22:00)</label>
+                <input id="tpReservationTime" name="reservationTime" type="time">
+            </div>
+            <div>
+                <label for="cboSpecialOccasion">Is this a special Occasion?</label>
+                <input id="cboSpecialOccasion" name="specialOccasion" type="checkbox">
+            </div>
+            <input type="submit">
+        </form>
+    </main>
+
+</body>
+</html>
