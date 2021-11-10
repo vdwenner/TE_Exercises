@@ -1,0 +1,66 @@
+/* Defaults */
+
+*{
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html{
+    height: 100%;
+    font-size: 16px;
+}
+
+body {
+    white-space: nowrap;
+    font-family: 'Raleway', sans-serif;
+    background-image: linear-gradient(to bottom, #858585, #bbb);
+}
+
+/* Headers */
+
+header {
+    position: fixed;
+    top: 0;
+    height: 50px;
+}
+
+header > h1, header > p {
+    display: inline-block;
+    padding: 20px;
+    vertical-align: middle;
+    color: rgba(255,255,255,0.5);
+    border-right: 2px solid rgba(255,255,255,0.5);
+    height: 20px;
+}
+
+header > h1 {
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+header > p {
+    padding-left: 0px;
+    font-size: .9rem;
+}
+
+main {
+    margin-top: 50px;
+}
+
+/* Trollo Lists */
+
+div.trello-list {
+    display: inline-block;
+    width: 300px;
+    margin-right: 10px;
+    vertical-align: top;
+
+    background-color: #ddd;
+    border-radius: 4px 4px;
+}
+
+/* Targets any H2 inside of <div class="trello-list"> tag */
+
+div.trello-list h2 {
+    /*  */
+}
