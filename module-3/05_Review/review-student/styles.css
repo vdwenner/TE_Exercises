@@ -55,3 +55,42 @@ main, section, footer {
     text-align: center;
     text-transform: uppercase;
 }
+
+#txtFanName{
+    display: grid;
+    margin-bottom: 20px;
+    width: 260px;
+
+}
+
+#hearAboutUs{
+    display: grid;
+    margin-bottom: 20px;
+    width: 260px;
+    height: 23px;
+}
+
+#txtFavoritePopsicle{
+    display: grid;
+    margin-bottom: 20px;
+    width: 260px;
+
+}
+
+#comments{
+    display:grid;
+    margin-bottom: 20px;
+    width: 450px;
+    height: 150px;
+}
+
+.submit{
+    width: 25%;
+    padding: 10px;
+    border-radius: 5px;
+    color: #000000;
+    background-color: #00AFEF;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}

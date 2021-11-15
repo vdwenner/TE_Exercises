@@ -16,3 +16,35 @@ body {
   color: #fff;
   border: solid 1px #777;
 }
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+div:nth-child(1){
+  flex-shrink: 1;
+  justify-content: space-evenly;
+
+}
+
+div:nth-child(2){
+  flex-shrink: 1;
+  justify-content: space-evenly;
+
+}
+
+div:nth-child(3){
+  flex-shrink: 1;
+  justify-content: space-evenly;
+
+}
+
+div:nth-child(4){
+  flex-shrink: 1;
+  justify-content: space-evenly;
+
+}
