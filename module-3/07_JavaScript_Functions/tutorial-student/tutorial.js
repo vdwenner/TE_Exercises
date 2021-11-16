@@ -6,6 +6,10 @@
  * @returns {boolean} true
  */
 
+ function turnOn(){
+   return true;
+ }
+
 /**
  * Create a function called returnsName.
  *
@@ -14,6 +18,10 @@
  * @returns {string} your name
  */
 
+ function returnsName(){
+   return `Vaughn Wenner`;
+ }
+
 /**
  * Create a function called returnGivenParameter that takes a
  * single parameter and then returns it.
@@ -21,6 +29,10 @@
  * @param {any} thing any value
  * @returns {any} the parameter that we were given
  */
+
+ function returnGivenParameter(thing){
+   return thing;
+ }
 
 /**
  * Now create a function called takeOptionalParameter
@@ -31,6 +43,10 @@
  * @param {any} [thing=0] any value
  * @returns {any} the parameter given, or 0 if none is given
  */
+
+ function takeOptionalParameter(thing = 0){
+   return thing;
+ }
 
 /**
  * Write an anonymous function in the filter that will

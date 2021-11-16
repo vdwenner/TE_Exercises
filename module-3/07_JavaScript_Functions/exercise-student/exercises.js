@@ -20,6 +20,23 @@
  * @returns {boolean} true if they are admitted
  */
 
+ function isAdmitted(gpa, satScore = 0, recommendation = false) {
+    let admitted = false;
+    if (gpa >= 3.0 && recommendation == true) {
+        admitted = true;
+    } else if (satScore >= 1200 && recommendation == true){
+        admitted = true;
+    } else if (gpa >= 4.0) {
+        admitted = true;
+    } else if (satScore >= 1300) {
+        admitted = true;
+    }
+    if (admitted == true) {
+        return true;
+    }
+    return false;
+}
+
 /**
  * Write a function called useParameterToFilterArray that takes an anonymous
  * function and uses that in the `unfilteredArray` filter function. Return the result.
@@ -28,6 +45,9 @@
  * @returns {number[]} the filtered array
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+function useParameterToFilterArray(array = []) {
+    return unfilteredArray.filter(array);
+}
 
 /**
  * Write a function called makeNumber that takes two strings
