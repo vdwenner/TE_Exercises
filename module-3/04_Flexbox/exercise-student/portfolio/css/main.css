@@ -5,7 +5,8 @@ body {
   min-height: 100vh;
   /* Photo by Andre Furtado on Unsplash */
   background: url(../img/andre-furtado-JtV6zyOZSrA-unsplash.jpg) left / cover no-repeat;
-  
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #left-panel {
@@ -13,6 +14,7 @@ body {
   background-color: #F7F7F7;
   flex-wrap: wrap;
   flex-basis: 35%;
+  flex-direction: column;
 }
 
 ul.social-icons {
@@ -20,15 +22,23 @@ ul.social-icons {
   margin: 20px 20px;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  
+  align-items: flex-end;
+  justify-content: space-between;
   
 }
 
-nav {}
+nav {
+  flex-grow: auto;
+}
 
-#right-panel {}
+#right-panel {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+
+}
 
 /* YOU WON'T NEED TO CHANGE ANY STYLES BELOW THIS LINE */
 
