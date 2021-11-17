@@ -62,6 +62,11 @@ function useParameterToFilterArray(array = []) {
  * @returns {number} the resultant number
  */
 
+ function makeNumber(str1, str2 = 0) {
+    let str3 = str1 + str2;
+    return Number(str3);
+ }
+
 /**
  * Write a function called addAll that takes an unknown number of parameters
  * and adds all of them together. Return the sum.
@@ -70,11 +75,35 @@ function useParameterToFilterArray(array = []) {
  * @returns {number} the sum of all the parameters (or arguments)
  */
 
+ function addAll(...numbers){
+     let result = 0;
+     for (let number of numbers){
+         result += number;
+     }
+     return result;
+ }
+
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+
+function makeHappy(sadArray = []){
+    let happyArray = [];
+    let happy = "Happy";
+    let separator = " ";
+    for (let array in sadArray) {
+        happyArray.push(concatenateStrings(happy, separator, sadArray[array]));
+    }
+    return happyArray;
+
+
+}
+
+function concatenateStrings(str1, str2, str3){
+    return str1 + str2 + str3;
+}
 
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -94,12 +123,25 @@ function useParameterToFilterArray(array = []) {
  * Use `map` and an anonymous function.
  */
 
+ function getFullAddressesOfProperties(inputArray = []) {
+    let newAddress = inputArray.map(function(element) {
+        [(element.streetName)];
+    });
+    console.log(newAddress);
+    return newAddress;
+ }
+
+
+
 /*
  * Write and document a function called findLargest.
  *
  * Using `forEach`, find the largest element in an array.
  * It must work for strings and numbers.
  */
+
+ 
+
 
 /*
  * CHALLENGE
