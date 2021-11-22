@@ -125,7 +125,7 @@ function concatenateStrings(str1, str2, str3){
 
  function getFullAddressesOfProperties(inputArray = []) {
     let newAddress = inputArray.map(function(element) {
-        [(element.streetName)];
+        [element.Streetname + " " + element.];
     });
     console.log(newAddress);
     return newAddress;
@@ -140,7 +140,24 @@ function concatenateStrings(str1, str2, str3){
  * It must work for strings and numbers.
  */
 
- 
+
+// function findLargest(element){
+//     let reducer = (previousElement, currentElement) => Math.max(previousElement, currentElement);
+//     if (array[0].)
+//     let newArray = array.reduce(reducer);
+
+//     console.log(newArray);
+//     return newArray
+// }
+
+function alphaNumConvert(array = []) {
+    for (let i = 0; i < array.length-1;i++) {
+        let reductionArray = array.reduce(Math.max[array[i], array[i+=1]])
+        console.log(reductionArray);
+        return reductionArray;
+
+    }
+}
 
 
 /*
