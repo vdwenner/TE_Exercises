@@ -31,6 +31,8 @@
 <script>
 export default {
   name: 'user-list',
+  description: "Host and plan the perfect cigar party for all of your squirrally friends",
+  newReview: ();
   data() {
     return {
       users: [

@@ -141,6 +141,11 @@ export default {
         return currentCount + (review.rating === 5);
       }, 0);
     }
+  },
+  methods: {
+    addNewReview() {
+      this.reviews.unshift(this.newReview);
+    }
   }
 };
 </script>
